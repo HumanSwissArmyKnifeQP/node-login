@@ -13,4 +13,6 @@
 
 6. `cd` into project folder and `npm start`
 
-TODO: Create bash script for starting mongod and app as subprocess.
+TODOS: 
+- Create bash script for starting mongod and app as subprocess.
+- Fix errors unsolvable with `eslint`.
