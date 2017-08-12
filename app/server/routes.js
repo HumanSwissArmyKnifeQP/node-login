@@ -13,17 +13,17 @@ module.exports = function( app ){
 
       res.render( 'login', { title: 'Hello - Please Login To Your Account' } );
     
-    }	else{
+    }else{
 
 	// attempt automatic login //
       AM.autoLogin( req.cookies.user, req.cookies.pass, ( o )=>{
 
-        if ( o != null ){
+				if( o != null ){
 
-				    req.session.user = o;
+					req.session.user = o;
           res.redirect( '/home' );
 
-        }	else{
+        }else{
 
           res.render( 'login', { title: 'Hello - Please Login To Your Account' } );
         
@@ -307,7 +307,7 @@ module.exports = function( app ){
 
       res.render( 'search', {
         title:     'ID Search',
-        countries: CT,
+        customers: [],
         udata:     req.session.user
       } );
 
