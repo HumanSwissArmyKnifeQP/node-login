@@ -294,8 +294,7 @@ module.exports = function( app ){
   
   } );
 	
-	// logged-in user homepage //
-	
+	// ID Search Page //
   app.get( '/search', ( req, res )=>{
 
     if ( req.session.user == null ){
@@ -307,6 +306,26 @@ module.exports = function( app ){
 
       res.render( 'search', {
         title:     'ID Search',
+        customers: [],
+        udata:     req.session.user
+      } );
+
+    }
+
+  } );
+	
+	// ID Search Page //
+  app.get( '/results', ( req, res )=>{
+
+    if ( req.session.user == null ){
+
+	// if user is not logged-in redirect back to login page //
+      res.redirect( '/' );
+    
+    }	else{
+
+      res.render( 'results', {
+        title:     'Results',
         customers: [],
         udata:     req.session.user
       } );

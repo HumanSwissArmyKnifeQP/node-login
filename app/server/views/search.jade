@@ -4,9 +4,8 @@ extends layout
 block content
 
 	#login.center-vertical
-		form.well(id='form-login', method='post')
-			h2 Hello!
-			h6 Please Login To Your Account
+		form.well(id='form-search', method='get')
+			h2 Customer Search
 			.form-group
 				label First Name
 				input.form-control(type='firstName', id='first-name-tf', name='firstName')
@@ -17,15 +16,8 @@ block content
 				label Date of Birth
 				input.form-control(type='dateOfBirth', id='dob-tf', name='dob')
 			.form-group
-				button(type='submit').btn.btn-primary.button-sign-in
+				button(type='submit').btn.btn-primary
 					| Search
-			.clearfix
-			hr
-			.btm-links
-				#forgot-password
-					a(href='#') Forgot Your Password?
-				#create-account
-					a(href='/signup') Create An Account
 			.clearfix
 
 	include modals/alert
