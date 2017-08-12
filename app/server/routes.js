@@ -208,11 +208,11 @@ module.exports = function( app ){
 
     AM.validateResetLink( email, passH, ( e )=>{
 
-      if ( e != 'ok' ){
+      if( e != 'ok' ){
 
         res.redirect( '/' );
   
-      } else{
+      }else{
 
 	// save the user's email in a session instead of sending to the client //
         req.session.reset = { email, passHash: passH };
@@ -264,7 +264,7 @@ module.exports = function( app ){
 
     AM.deleteAccount( req.body.id, ( e, obj )=>{
 
-      if ( !e ){
+      if( !e ){
 
         res.clearCookie( 'user' );
         res.clearCookie( 'pass' );
@@ -274,12 +274,12 @@ module.exports = function( app ){
         
         } );
       
-      }	else{
+      }else{
 
         res.status( 400 ).send( 'record not found' );
 
       }
-	    
+   
     } );
 
   } );
@@ -292,6 +292,27 @@ module.exports = function( app ){
 
     } );
   
+  } );
+	
+	// logged-in user homepage //
+	
+  app.get( '/search', ( req, res )=>{
+
+    if ( req.session.user == null ){
+
+	// if user is not logged-in redirect back to login page //
+      res.redirect( '/' );
+    
+    }	else{
+
+      res.render( 'search', {
+        title:     'ID Search',
+        countries: CT,
+        udata:     req.session.user
+      } );
+
+    }
+
   } );
 	
   app.get( '*', ( req, res )=>{
